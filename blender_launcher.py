@@ -4,17 +4,17 @@ from PySide2 import QtCore, QtWidgets, QtGui
 
 import launcher
 
-class MayaLauncherWindow(launcher.LauncherWindow):
-    def __init__(self, software="maya"):
+class BlenderLauncherWindow(launcher.LauncherWindow):
+    def __init__(self, software="blender"):
         super().__init__(software)
 
     def launchSoftware(self):
         self.setPackageEnvironments()
         self.setProjectEnvironments()
-        if self.file_tree.currentItem().text(0).endswith(".ma"):
+        if self.file_tree.currentItem().text(0).endswith(".blend"):
             os.startfile(self.file_tree.currentItem().data(32, 0))
         else:
-            os.startfile("C:/Program Files/Autodesk/Maya2020/bin/maya.exe")
+            os.startfile("C:/Program Files/Blender Foundation/Blender 3.1/blender-launcher.exe")
 
 
 app = QtWidgets.QApplication(sys.argv)
@@ -37,7 +37,7 @@ dark_palette.setColor(QtGui.QPalette.Highlight, QtGui.QColor(42, 130, 218))
 dark_palette.setColor(QtGui.QPalette.HighlightedText, QtCore.Qt.black)
 app.setPalette(dark_palette)
 
-window = MayaLauncherWindow()
+window = BlenderLauncherWindow()
 window.show()
 
 app.exec_()
