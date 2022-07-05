@@ -11,6 +11,7 @@ class MayaLauncherWindow(launcher.LauncherWindow):
     def launchSoftware(self):
         self.setPackageEnvironments()
         self.setProjectEnvironments()
+        os.environ["MAYA_ENV_DIR"] = "D:/pipeline/code/global/maya"
         if self.file_tree.currentItem().text(0).endswith(".ma"):
             os.startfile(self.file_tree.currentItem().data(32, 0))
         else:
